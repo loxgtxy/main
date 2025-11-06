@@ -304,7 +304,7 @@ def monitor_market(
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="监控 Polymarket 事件概率与订单簿")
-    group = parser.add_mutually_exclusive_group(required=True)
+    group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument("--slug", help="市场的 slug，例如 will-trump-win-2024")
     group.add_argument("--keyword", help="在问题文本中搜索的关键词")
     parser.add_argument("--outcome", default="yes", help="要监控的结果名称，例如 yes 或 no")
@@ -318,9 +318,26 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
+def prompt_keyword() -> str:
+    """Prompt the user for a market keyword until a non-empty value is provided."""
+
+    while True:
+        try:
+            keyword = input("请输入用于搜索市场的关键词: ").strip()
+        except EOFError as exc:
+            raise PolymarketAPIError("未提供关键词，无法继续执行搜索") from exc
+
+        if keyword:
+            return keyword
+
+        print("关键词不能为空，请重新输入。")
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     args = parse_args(argv)
     try:
+        if not args.slug and not args.keyword:
+            args.keyword = prompt_keyword()
         monitor_market(
             slug=args.slug,
             keyword=args.keyword,

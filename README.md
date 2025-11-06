@@ -9,11 +9,14 @@
 - 无需额外第三方依赖，使用 Python 标准库发起 HTTP 请求
 
 ## 使用方法
+直接运行脚本后，会提示输入用于搜索市场的关键词：
+```bash
+python polymarket_monitor.py
+# 请输入用于搜索市场的关键词: Trump
+```
+脚本同样保留了命令行参数，便于直接使用 slug 或预设好的关键词：
 ```bash
 python polymarket_monitor.py --slug will-trump-win-2024 --outcome yes --depth 12 --interval 2
-```
-或根据问题关键字搜索后选择结果：
-```bash
 python polymarket_monitor.py --keyword "Trump" --outcome yes
 ```
 
