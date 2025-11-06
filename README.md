@@ -44,3 +44,21 @@ Will Donald Trump win the 2024 U.S. Presidential Election?
 
 ## 参考资料
 - [Polymarket API Reference](https://docs.polymarket.com/api-reference) —— 市场搜索、单一市场详情以及订单簿接口的官方说明
+
+## 快速同步网页端内容到本地的小贴士
+如果先在网页端（例如浏览器中的 Git 托管服务或在线 IDE）创建/修改了本仓库的文件，通常可以通过 Git 的远程同步能力把改动快速拉到本地：
+
+1. **确认网页端已提交并推送**：在网页界面完成改动后执行提交（commit），并确保它已经推送到远程仓库的目标分支。
+2. **在本地拉取最新变更**：打开本地终端，进入仓库目录后运行：
+   ```bash
+   git fetch origin
+   git pull origin <分支名>
+   ```
+   这样就能把网页端的最新提交合并到本地分支。
+3. **需要单文件时的快速方式**：如果只是想临时同步单个文件，可以在网页端获取该文件的原始（raw）地址，然后在本地使用 `curl` 或 `wget` 下载覆盖：
+   ```bash
+   curl -o polymarket_monitor.py https://raw.githubusercontent.com/<用户名>/<仓库名>/<分支>/polymarket_monitor.py
+   ```
+   下载后仍建议执行一次 `git status` 确认工作区状态，并在需要时进行合并或提交。
+
+> 提示：若仓库启用了多重身份验证，记得在本地为 `git` 配置好相应的访问令牌或 SSH Key，以免拉取时遇到权限问题。
