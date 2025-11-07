@@ -1,0 +1,66 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# User files (防止误提交系统文件)
+*.dat
+*.log
+*.ini
+NTUSER.*
+AppData/
+Contacts/
+Desktop/
+Documents/
+Downloads/
+Favorites/
+Links/
+Music/
+Pictures/
+Videos/
+OneDrive/
+Saved Games/
+Searches/
+WPS Cloud Files/
+WPSDrive/
+WeChatProjects/
+letsvpn/
+ragg/
+
+# Cache and config
+.cache/
+.config/
+.cursor/
+.ssh/
+.idlerc/
+.stm32cubemx/
+.stmcube/
+.stmcufinder/
+.qt_material/
+.wdm/
+.codex/
+.crawl4ai/
+.node_repl_history
+.python_history
+.gitconfig
+
+# HTML files (临时文件)
+*.html
+mumu_boot.txt
+
